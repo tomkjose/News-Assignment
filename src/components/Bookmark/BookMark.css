@@ -50,6 +50,7 @@
 
   .bookmark__empty {
     font-size: 4rem;
+    height: 100vh;
   }
 }
 
