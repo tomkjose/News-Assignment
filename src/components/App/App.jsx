@@ -1,9 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, Profile, Settings, Fof } from "../../pages/Index";
 import Navbar from "../Navbar/Navbar";
+import { useTheme } from "../../Providers/ThemeProvider";
+import "./App.css";
 function App() {
+  const { currentTheme } = useTheme();
   return (
-    <div className="App">
+    <div className={`App ${currentTheme ? "Dark" : "Light"}`}>
       <Router>
         <Navbar />
         <Routes>

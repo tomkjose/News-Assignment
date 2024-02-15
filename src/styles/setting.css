@@ -1,0 +1,26 @@
+.setting {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  font-size: 10rem;
+  font-weight: 900;
+  color: lightblue;
+  opacity: 0.5;
+}
+
+.setting__title {
+  text-align: center;
+  font-size: 10rem;
+  font-weight: 900;
+  color: lightblue;
+  opacity: 0.5;
+}
+
+.setting__btn {
+  color: white;
+  background-color: #1d9bf0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
