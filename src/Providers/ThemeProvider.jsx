@@ -8,7 +8,7 @@ export const ThemeProvider = ({ children }) => {
   );
   const changeTheme = () => {
     setCurrentTheme(!currentTheme);
-    localStorage.setItem("theme", !currentTheme);
+    localStorage.setItem("theme", currentTheme);
   };
   const theme = {
     currentTheme,
