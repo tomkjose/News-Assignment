@@ -11,9 +11,11 @@ import {
 import { fetchNews } from "../../apis";
 import Pagination from "../Pagination/Pagination";
 import { addToBookMark, removeFromBookMark } from "../../redux/user/UserAction";
+import Loading from "../Loading/Loading";
 
 function Posts() {
   const news = useSelector((state) => state.news.news);
+  const loading = useSelector((state) => state.news.loading);
   const user = useSelector((state) => state.user.user);
   const numberOfPostPerPage = 10;
   const totalPosts = news.length;
@@ -56,37 +58,43 @@ function Posts() {
       dispatch(addToBookMark(post));
     }
   };
-
+  console.log("loading", loading);
   return (
     <div className="posts">
-      <div className="posts__container">
-        {currentPosts.map((post, index) => {
-          const bookmarkedIndex = user.bookmark.findIndex(
-            (bookmark) => bookmark.url === post.url
-          );
-          return (
-            <div className="post__card" key={index}>
-              <div className="post__title__container">
-                <div className="post__title">{post.title}</div>
-                <FontAwesomeIcon
-                  icon={faBookmark}
-                  size="xl"
-                  style={{
-                    cursor: "pointer",
-                    color: bookmarkedIndex !== -1 ? "#1d9bf0" : "inherit",
-                  }}
-                  onClick={() => handleToggleBookmark(post)}
+      {!loading ? (
+        <div className="posts__container">
+          {currentPosts.map((post, index) => {
+            const bookmarkedIndex = user.bookmark.findIndex(
+              (bookmark) => bookmark.url === post.url
+            );
+            return (
+              <div className="post__card" key={index}>
+                <div className="post__title__container">
+                  <div className="post__title">{post.title}</div>
+                  <FontAwesomeIcon
+                    icon={faBookmark}
+                    size="xl"
+                    style={{
+                      cursor: "pointer",
+                      color: bookmarkedIndex !== -1 ? "#1d9bf0" : "inherit",
+                    }}
+                    onClick={() => handleToggleBookmark(post)}
+                  />
+                </div>
+                <img
+                  src={post.urlToImage}
+                  alt="post thumbnail"
+                  className="post__image"
                 />
               </div>
-              <img
-                src={post.urlToImage}
-                alt="post thumbnail"
-                className="post__image"
-              />
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="loader__container">
+          <Loading />
+        </div>
+      )}
       <Pagination
         numberOfPostPerPage={numberOfPostPerPage}
         totalPosts={totalPosts}
