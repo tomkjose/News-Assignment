@@ -4,8 +4,8 @@ import UserDetails from "../components/UserDetails/UserDetails";
 import Posts from "../components/Posts/Posts";
 import Bookmark from "../components/Bookmark/Bookmark";
 import { useTheme } from "../Providers/ThemeProvider";
-// import { FontAwesomeIcon } from "@fortaawesome/react-fontawesome";
-// import { faBorderAll, faBookmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBorderAll, faBookmark } from "@fortawesome/free-solid-svg-icons";
 function Profile() {
   const [activeTab, setActiveTab] = useState("posts");
   const { currentTheme } = useTheme();
@@ -26,6 +26,11 @@ function Profile() {
           }
           style={{ color: ` ${currentTheme ? "white" : "black"}` }}
         >
+          <FontAwesomeIcon
+            icon={faBorderAll}
+            size="md"
+            style={{ color: ` ${currentTheme ? "white" : "black"}` }}
+          />{" "}
           Posts
         </button>
         <button
@@ -37,6 +42,11 @@ function Profile() {
           }
           style={{ color: ` ${currentTheme ? "white" : "black"}` }}
         >
+          <FontAwesomeIcon
+            icon={faBookmark}
+            size="md"
+            style={{ color: ` ${currentTheme ? "white" : "black"}` }}
+          />{" "}
           Bookmark
         </button>
       </div>

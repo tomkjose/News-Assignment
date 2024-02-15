@@ -58,7 +58,6 @@ function Posts() {
       dispatch(addToBookMark(post));
     }
   };
-  console.log("loading", loading);
   return (
     <div className="posts">
       {!loading ? (

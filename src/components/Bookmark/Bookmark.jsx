@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./BookMark.css";
 import { useDispatch, useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBookmark, faGhost } from "@fortawesome/free-solid-svg-icons";
+
 import Pagination from "../Pagination/Pagination";
 import { removeFromBookMark } from "../../redux/user/UserAction";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBookmark, faGhost } from "@fortawesome/free-solid-svg-icons";
 function Bookmark() {
   const bookmark = useSelector((state) => state.user.user.bookmark);
   const user = useSelector((state) => state.user.user);
@@ -26,7 +27,6 @@ function Bookmark() {
     dispatch(removeFromBookMark(url));
   };
   // console.log("bookmark", bookmark);
-  console.log("user", user);
   return (
     <div className="bookmark">
       {bookmark.length > 0 ? (
